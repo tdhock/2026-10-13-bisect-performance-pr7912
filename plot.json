@@ -357,6 +357,7 @@
 "x": "rank",
 "y": "y",
 "colour": "age",
+"key": "paste(Bisect, age)",
 "clickSelects": "Bisect",
 "showSelected1": "age"
 },
@@ -374,6 +375,7 @@
 "colour": "rgb",
 "y": "numeric",
 "x": "numeric",
+"key": "character",
 "clickSelects": "character",
 "showSelected1": "factor",
 "PANEL": "factor",
@@ -393,7 +395,7 @@
 "total": 1,
 "chunk_info": {
  "geom9_point_bisects_chunk1.tsv": {
- "bytes":      650,
+ "bytes":      938,
 "rows": 14 
 } 
 } 
@@ -496,6 +498,7 @@
 "x": "rank",
 "y": "value_median",
 "colour": "age",
+"key": "1",
 "showSelected1": "age"
 },
 "params": {
@@ -509,6 +512,7 @@
 "colour": "rgb",
 "y": "numeric",
 "x": "numeric",
+"key": "numeric",
 "showSelected1": "factor",
 "PANEL": "factor",
 "group": "character"
@@ -526,7 +530,7 @@
 "total": 1,
 "chunk_info": {
  "geom12_line_bisects_chunk1.tsv": {
- "bytes":     5036,
+ "bytes":     5300,
 "rows": 130 
 } 
 } 
