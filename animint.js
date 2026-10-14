@@ -9,6 +9,55 @@ var animint = function (to_select, json_file) {
   var default_axis_px = 16;
   var grid_layout = false;
   var grid_layout_table;
+  
+  // Helper function to format numbers with commas (e.g., 4321 -> "4,321")
+  function formatWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  
+  // Helper function to format bytes as KiB or MiB with appropriate precision
+  // Uses binary units (1024) consistent with "man du" documentation
+  function formatBytes(bytes) {
+    if (bytes === 0) return "0";
+    var kib = bytes / 1024;
+    if (kib < 1024) {
+      // Less than 1 MiB, show in KiB
+      if (kib < 10) {
+        return kib.toFixed(2) + " KiB";
+      } else if (kib < 100) {
+        return kib.toFixed(1) + " KiB";
+      } else {
+        return Math.round(kib) + " KiB";
+      }
+    } else {
+      // 1 MiB or more, show in MiB
+      var mib = kib / 1024;
+      return mib.toFixed(2) + " MiB";
+    }
+  }
+  
+  // Helper function to apply consistent border and padding styles to table cells
+  function applyCellStyles(cell) {
+    return cell.style("border", "1px solid #ddd").style("padding", "4px");
+  }
+
+  // Helper function to update download status display after a chunk is downloaded
+  // Used by both common chunk and regular chunk download handlers
+  function updateDownloadStatus(g_info, tsv_name) {
+    if(g_info.chunk_info && g_info.chunk_info[tsv_name]){
+      var info = g_info.chunk_info[tsv_name];
+      g_info.total_bytes += info.bytes;
+      g_info.total_rows += info.rows;
+      g_info.downloaded_chunks += 1;
+      // Update display with "downloaded / total" format
+      var downloaded_count = g_info.downloaded_chunks;
+      var total_count = g_info.total_possible_chunks;
+      g_info.td_files.text(downloaded_count + " / " + total_count);
+      g_info.td_disk.text(formatBytes(g_info.total_bytes) + " / " + formatBytes(g_info.possible_bytes));
+      g_info.td_rows.text(formatWithCommas(g_info.total_rows) + " / " + formatWithCommas(g_info.possible_rows));
+    }
+  }
+  
   function wait_until_then(timeout, condFun, readyFun) {
     var args=arguments
     function checkFun() {
@@ -224,11 +273,35 @@ var animint = function (to_select, json_file) {
     }
     // Add a row to the loading table.
     g_info.tr = Widgets["loading"].append("tr");
-    g_info.tr.append("td").text(g_name);
-    g_info.tr.append("td").attr("class", "chunk");
-    g_info.tr.append("td").attr("class", "downloaded").text(0);
-    g_info.tr.append("td").text(g_info.total);
-    g_info.tr.append("td").attr("class", "status").text("initialized");
+    applyCellStyles(g_info.tr.append("td").text(g_name));
+    g_info.td_files = applyCellStyles(g_info.tr.append("td").attr("class", "files").style("text-align", "right"));
+    g_info.td_disk = applyCellStyles(g_info.tr.append("td").attr("class", "disk").style("text-align", "right"));
+    g_info.td_rows = applyCellStyles(g_info.tr.append("td").attr("class", "rows").style("text-align", "right"));
+    // Initialize size tracking
+    g_info.total_bytes = 0;
+    g_info.total_rows = 0;
+    g_info.downloaded_chunks = 0;
+    // Calculate total possible bytes and rows from chunk_info
+    g_info.possible_bytes = 0;
+    g_info.possible_rows = 0;
+    g_info.total_possible_chunks = g_info.total;
+    if(g_info.chunk_info){
+      var tsv_count = 0;
+      for(var chunk_name in g_info.chunk_info){
+        if(chunk_name.endsWith('.tsv')){
+          g_info.possible_bytes += g_info.chunk_info[chunk_name].bytes;
+          g_info.possible_rows += g_info.chunk_info[chunk_name].rows;
+          tsv_count++;
+        }
+      }
+      // chunk_info includes the common chunk, so total_possible_chunks should include it
+      g_info.total_possible_chunks = tsv_count;
+    }
+
+    // Set initial display values
+    g_info.td_files.text("0 / " + g_info.total_possible_chunks);
+    g_info.td_disk.text("0 / " + formatBytes(g_info.possible_bytes));
+    g_info.td_rows.text("0 / " + formatWithCommas(g_info.possible_rows));
 
     // load chunk tsv
     g_info.data = {};
@@ -243,6 +316,8 @@ var animint = function (to_select, json_file) {
       d3.tsv(common_path, function (error, response) {
         var converted = convert_R_types(response, g_info.types);
         g_info.data[common_tsv] = nest_by_group.map(converted);
+        // Track common chunk download for size information
+        updateDownloadStatus(g_info, common_tsv);
       });
     } else {
       g_info.common_tsv = null;
@@ -647,10 +722,7 @@ var animint = function (to_select, json_file) {
           var axis_path = xaxis_g.select("path.domain");
           axis_path.remove();
         }
-        xaxis_g.selectAll("text")
-          .style("text-anchor", p_info.xanchor)
-          .style("font-size", p_info.xsize)
-          .attr("transform", "rotate(" + p_info.xangle + " 0 9)");
+        apply_axis_text_styles(xaxis_g, "x", p_info);
       }
       if(draw_y){
         var yaxis = d3.svg.axis()
@@ -669,8 +741,7 @@ var animint = function (to_select, json_file) {
           var axis_path = yaxis_g.select("path.domain");
           axis_path.remove();
         }
-  yaxis_g.selectAll(".tick text")
-    .style("font-size", p_info.ysize);
+        apply_axis_text_styles(yaxis_g, "y", p_info);
       }
 
       if(!axis.xline) {
@@ -997,8 +1068,9 @@ var animint = function (to_select, json_file) {
         });
         var chunk = nest.map(response);
         g_info.data[tsv_name] = chunk;
-        g_info.tr.select("td.downloaded").text(d3.keys(g_info.data).length);
         g_info.download_status[tsv_name] = "saved";
+        // Update size information after download
+        updateDownloadStatus(g_info, tsv_name);
         funAfter(chunk);
       });
     });
@@ -1007,7 +1079,6 @@ var animint = function (to_select, json_file) {
   // update_geom is responsible for obtaining a chunk of downloaded
   // data, and then calling draw_geom to actually draw it.
   var draw_geom = function(g_info, chunk, selector_name, PANEL){
-    g_info.tr.select("td.status").text("displayed");
     var svg = SVGs[g_info.classed];
     // derive the plot name from the geometry name
     var g_names = g_info.classed.split("_");
@@ -1930,6 +2001,20 @@ var animint = function (to_select, json_file) {
       }
     }
   
+  // Helper function to apply axis text styling
+  // Used by both axis initialization and update_axes to ensure consistency
+  function apply_axis_text_styles(axis_g, axes, p_info){
+    if(axes == "x"){
+      axis_g.selectAll("text")
+        .style("text-anchor", p_info.xanchor)
+        .style("font-size", p_info.xsize)
+        .attr("transform", "rotate(" + p_info.xangle + " 0 9)");
+    }else{
+      axis_g.selectAll(".tick text")
+        .style("font-size", p_info.ysize);
+    }
+  }
+
   // update scales for the plots that have update_axes option in
   // theme_animint
   function update_scales(p_name, axes, v_name, value){
@@ -1972,7 +2057,7 @@ var animint = function (to_select, json_file) {
             // Once scales are updated, update the axis ticks if needed
             if(draw_axes){
               // Tick values are same as major grid lines
-              update_axes(p_name, xyaxis, panel_i, grid_vals[1]);
+              update_axes(p_name, xyaxis, panel_i, grid_vals[1], v_name);
             }
             // Update major and minor grid lines
             update_grids(p_name, xyaxis, panel_i, grid_vals, scales);
@@ -1984,7 +2069,7 @@ var animint = function (to_select, json_file) {
 
   // Update the axis ticks etc. once plot is zoomed in/out
   // currently called from update_scales.
-  function update_axes(p_name, axes, panel_i, tick_vals){
+  function update_axes(p_name, axes, panel_i, tick_vals, v_name){
     var orientation;
     if(axes == "x"){
       orientation = "bottom";
@@ -1999,16 +2084,23 @@ var animint = function (to_select, json_file) {
           .orient(orientation)
           .tickValues(tick_vals);
     // update existing axis
-    var xyaxis_g = element.select("#plot_"+p_name).select("."+axes+"axis_"+panel_i)
+    var xyaxis_sel = element.select("#"+viz_id+"_"+p_name).select("."+axes+"axis_"+panel_i);
+    var milliseconds = 0;
+    if(v_name && Selectors.hasOwnProperty(v_name) && Selectors[v_name].hasOwnProperty("duration")){
+      milliseconds = Selectors[v_name].duration;
+    }
+    var xyaxis_g = xyaxis_sel
           .transition()
-          .duration(1000)
+          .duration(milliseconds)
           .call(xyaxis);
+    // Fix for issue #273: preserve axis text styling after update
+    apply_axis_text_styles(xyaxis_sel, axes, Plots[p_name]);
   }
 
   // Update major/minor grids once axes ticks have been updated
   function update_grids(p_name, axes, panel_i, grid_vals, scales){
     // Select panel to update
-    var bgr = element.select("#plot_"+p_name).select(".bgr"+panel_i);
+    var bgr = element.select("#"+viz_id+"_"+p_name).select(".bgr"+panel_i);
     // Update major and minor grid lines
     ["minor", "major"].forEach(function(grid_class, j){
       var lines = bgr.select(".grid_"+grid_class).select("."+axes);
@@ -2368,14 +2460,16 @@ var animint = function (to_select, json_file) {
         }
       });
     var loading = widget_td.append("table")
-      .style("display", "none");
+      .attr("id", viz_id + "_download_status")
+      .style("display", "none")
+      .style("border-collapse", "collapse")
+      .style("border", "1px solid #ddd");
     Widgets["loading"] = loading;
     var tr = loading.append("tr");
-    tr.append("th").text("geom");
-    tr.append("th").attr("class", "chunk").text("selected chunk");
-    tr.append("th").attr("class", "downloaded").text("downloaded");
-    tr.append("th").attr("class", "total").text("total");
-    tr.append("th").attr("class", "status").text("status");
+    applyCellStyles(tr.append("th").text("geom"));
+    applyCellStyles(tr.append("th").attr("class", "files").style("text-align", "right")).text("files");
+    applyCellStyles(tr.append("th").attr("class", "disk").style("text-align", "right")).text("disk");
+    applyCellStyles(tr.append("th").attr("class", "rows").style("text-align", "right")).text("rows");
     
     // Add geoms and construct nest operators.
     for (var g_name in response.geoms) {
@@ -2737,52 +2831,5 @@ var animint = function (to_select, json_file) {
       status_array=status_array.slice(1)
       return status_array.every(function(elem){ return elem === "displayed"});           
     }
-    if(window.location.hash) {
-      var fragment=window.location.hash;
-      fragment=fragment.slice(1);
-      fragment=decodeURI(fragment)
-      var frag_array=fragment.split(/(.*?})/);
-      frag_array=frag_array.filter(function(x){ return x!=""})
-      frag_array.forEach(function(selector_string){ 
-        var selector_hash=selector_string.split("=");
-        var selector_nam=selector_hash[0];
-        var selector_values=selector_hash[1];
-        var re = /\{(.*?)\}/;
-        selector_values = re.exec(selector_values)[1];
-        var array_values = selector_values.split(',');
-        if(Selectors.hasOwnProperty(selector_nam)){
-          var s_info = Selectors[selector_nam]
-          if(s_info.type=="single"){//TODO fix
-            array_values.forEach(function(element) {
-              wait_until_then(100, check_func, update_selector,selector_nam,element)
-              if(response.time)Animation.pause(true)
-            });   
-          }else{
-            var old_selections = Selectors[selector_nam].selected;
-            // the levels that need to have selections turned on
-            array_values
-              .filter(function(n) {
-                return old_selections.indexOf(n) == -1;
-              })
-              .forEach(function(element) {
-                wait_until_then(100, check_func, update_selector,selector_nam,element)
-                if(response.time){
-                  Animation.pause(true)
-                }
-              });
-            old_selections
-              .filter(function(n) {
-                return array_values.indexOf(n) == -1;
-              })
-              .forEach(function(element) {
-                wait_until_then(100, check_func, update_selector,selector_nam,element)
-                if(response.time){
-                  Animation.pause(true)
-                }
-              });     
-          }//if(single) else multiple selection
-        }//if(Selectors.hasOwnProperty(selector_nam))
-      })//frag_array.forEach
-    }//if(window.location.hash)
   });
 };

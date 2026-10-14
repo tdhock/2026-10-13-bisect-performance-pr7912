@@ -40,7 +40,13 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom1_rect_bisects_chunk1.tsv": {
+ "bytes":     1155,
+"rows": 21 
+} 
+} 
 },
 "geom2_tallrect_bisects": {
  "geom": "tallrect",
@@ -77,11 +83,50 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom2_tallrect_bisects_chunk1.tsv": {
+ "bytes":     4142,
+"rows": 134 
+} 
+} 
 },
 "geom3_vline_bisects": {
  "geom": "vline",
 "classed": "geom3_vline_bisects",
+"aes": {
+"xintercept": "rank"
+},
+"params": {
+ "na.rm": false,
+"na.rm": false,
+"colour": "#00BFFF",
+"size":        1 
+},
+"types": {
+"xintercept": "numeric",
+"PANEL": "factor",
+"group": "character"
+},
+"chunk_order": [],
+"nest_order": [
+ "PANEL" 
+],
+"subset_order": [
+ "PANEL" 
+],
+"chunks": 1,
+"total": 1,
+"chunk_info": {
+ "geom3_vline_bisects_chunk1.tsv": {
+ "bytes":      116,
+"rows": 21 
+} 
+} 
+},
+"geom4_vline_bisects": {
+ "geom": "vline",
+"classed": "geom4_vline_bisects",
 "aes": {
 "xintercept": "rank_change",
 "key": "1",
@@ -115,11 +160,57 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom4_vline_bisects_chunk1.tsv": {
+ "bytes":      721,
+"rows": 21 
+} 
+} 
 },
-"geom4_segment_bisects": {
+"geom5_labelaligned_bisects": {
+ "geom": "label_aligned",
+"classed": "geom5_labelaligned_bisects",
+"aes": {
+"x": "rank",
+"y": "0",
+"label": "sprintf(\" %s \", Rname)"
+},
+"params": {
+ "label_r":     0.15,
+"alignment": "horizontal",
+"min_distance":      0.1,
+"background_rect": true,
+"na.rm": false,
+"na.rm": false,
+"colour": "#00BFFF" 
+},
+"types": {
+"y": "numeric",
+"x": "numeric",
+"label": "character",
+"PANEL": "factor",
+"group": "character"
+},
+"chunk_order": [],
+"nest_order": [
+ "PANEL" 
+],
+"subset_order": [
+ "PANEL" 
+],
+"chunks": 1,
+"total": 1,
+"chunk_info": {
+ "geom5_labelaligned_bisects_chunk1.tsv": {
+ "bytes":      124,
+"rows": 7 
+} 
+} 
+},
+"geom6_segment_bisects": {
  "geom": "segment",
-"classed": "geom4_segment_bisects",
+"classed": "geom6_segment_bisects",
 "aes": {
 "x": "ifelse(age == \"old\", rank_old, rank_min)",
 "y": "med_value",
@@ -134,6 +225,7 @@
  "lineend": "butt",
 "na.rm": false,
 "na.rm": false,
+"size":        4,
 "showSelected": [ "age", "Bisect" ],
 "help_showSelected": [ "age", "Bisect" ] 
 },
@@ -161,11 +253,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom6_segment_bisects_chunk1.tsv": {
+ "bytes":     2159,
+"rows": 28 
+} 
+} 
 },
-"geom5_segment_bisects": {
+"geom7_segment_bisects": {
  "geom": "segment",
-"classed": "geom5_segment_bisects",
+"classed": "geom7_segment_bisects",
 "aes": {
 "x": "rank_old",
 "y": "y",
@@ -179,6 +277,7 @@
 "na.rm": false,
 "size":        4,
 "clickSelects": "Bisect",
+"alpha_off":      0.3,
 "help_clickSelects": "Bisect" 
 },
 "types": {
@@ -198,14 +297,20 @@
  "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom7_segment_bisects_chunk1.tsv": {
+ "bytes":      226,
+"rows": 7 
+} 
+} 
 },
-"geom6_text_bisects": {
+"geom8_text_bisects": {
  "geom": "text",
-"classed": "geom6_text_bisects",
+"classed": "geom8_text_bisects",
 "aes": {
 "x": "(min(rank_old) + max(rank_new))/2",
-"y": "0",
+"y": "1",
 "key": "1",
 "label": "Bisect",
 "showSelected1": "Bisect"
@@ -237,46 +342,65 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom8_text_bisects_chunk1.tsv": {
+ "bytes":      325,
+"rows": 7 
+} 
+} 
 },
-"geom7_point_bisects": {
+"geom9_point_bisects": {
  "geom": "point",
-"classed": "geom7_point_bisects",
+"classed": "geom9_point_bisects",
 "aes": {
 "x": "rank",
 "y": "y",
 "colour": "age",
-"clickSelects": "Bisect"
+"clickSelects": "Bisect",
+"showSelected1": "age"
 },
 "params": {
  "na.rm": false,
 "na.rm": false,
 "size":        4,
-"clickSelects": [ "age", "Bisect" ],
-"help_clickSelects": [ "age", "Bisect" ] 
+"clickSelects": "Bisect",
+"alpha_off":      0.3,
+"showSelected": "age",
+"help_clickSelects": "Bisect",
+"help_showSelected": "age" 
 },
 "types": {
 "colour": "rgb",
 "y": "numeric",
 "x": "numeric",
 "clickSelects": "character",
+"showSelected1": "factor",
 "PANEL": "factor",
 "group": "character",
 "fill": "rgb"
 },
 "chunk_order": [],
 "nest_order": [
- "PANEL" 
+ "showSelected1",
+"PANEL" 
 ],
 "subset_order": [
- "PANEL" 
+ "showSelected1",
+"PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom9_point_bisects_chunk1.tsv": {
+ "bytes":      650,
+"rows": 14 
+} 
+} 
 },
-"geom8_segment_bisects": {
+"geom10_segment_bisects": {
  "geom": "segment",
-"classed": "geom8_segment_bisects",
+"classed": "geom10_segment_bisects",
 "aes": {
 "x": "rank_min",
 "y": "y",
@@ -290,6 +414,7 @@
 "na.rm": false,
 "size":        7,
 "clickSelects": "Bisect",
+"alpha_off":      0.3,
 "help_clickSelects": "Bisect" 
 },
 "types": {
@@ -309,11 +434,17 @@
  "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom10_segment_bisects_chunk1.tsv": {
+ "bytes":      228,
+"rows": 7 
+} 
+} 
 },
-"geom9_point_bisects": {
+"geom11_point_bisects": {
  "geom": "point",
-"classed": "geom9_point_bisects",
+"classed": "geom11_point_bisects",
 "aes": {
 "x": "rank_change",
 "y": "y",
@@ -327,6 +458,7 @@
 "size":        5,
 "clickSelects": "Bisect",
 "showSelected": "Status",
+"alpha_off":      0.3,
 "help_clickSelects": "Bisect",
 "help_showSelected": "Status" 
 },
@@ -349,11 +481,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom11_point_bisects_chunk1.tsv": {
+ "bytes":      322,
+"rows": 7 
+} 
+} 
 },
-"geom10_line_bisects": {
+"geom12_line_bisects": {
  "geom": "line",
-"classed": "geom10_line_bisects",
+"classed": "geom12_line_bisects",
 "aes": {
 "x": "rank",
 "y": "value_median",
@@ -363,7 +501,7 @@
 "params": {
  "na.rm": false,
 "na.rm": false,
-"size":        1,
+"size":        2,
 "showSelected": "age",
 "help_showSelected": "age" 
 },
@@ -385,11 +523,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom12_line_bisects_chunk1.tsv": {
+ "bytes":     5036,
+"rows": 130 
+} 
+} 
 },
-"geom11_point_bisects": {
+"geom13_point_bisects": {
  "geom": "point",
-"classed": "geom11_point_bisects",
+"classed": "geom13_point_bisects",
 "aes": {
 "x": "rank",
 "y": "value",
@@ -433,11 +577,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom13_point_bisects_chunk1.tsv": {
+ "bytes":    28251,
+"rows": 402 
+} 
+} 
 },
-"geom12_tallrect_bisects": {
+"geom14_tallrect_bisects": {
  "geom": "tallrect",
-"classed": "geom12_tallrect_bisects",
+"classed": "geom14_tallrect_bisects",
 "aes": {
 "xmin": "rank - 0.5",
 "xmax": "rank + 0.5",
@@ -477,11 +627,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom14_tallrect_bisects_chunk1.tsv": {
+ "bytes":    11797,
+"rows": 134 
+} 
+} 
 },
-"geom13_hline_details": {
+"geom15_hline_details": {
  "geom": "hline",
-"classed": "geom13_hline_details",
+"classed": "geom15_hline_details",
 "aes": {
 "yintercept": "seconds"
 },
@@ -499,11 +655,17 @@
 "nest_order": [],
 "subset_order": [],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom15_hline_details_chunk1.tsv": {
+ "bytes":       14,
+"rows": 1 
+} 
+} 
 },
-"geom14_text_details": {
+"geom16_text_details": {
  "geom": "text",
-"classed": "geom14_text_details",
+"classed": "geom16_text_details",
 "aes": {
 "x": "0",
 "y": "seconds * 1.1",
@@ -528,11 +690,17 @@
 "nest_order": [],
 "subset_order": [],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom16_text_details_chunk1.tsv": {
+ "bytes":       76,
+"rows": 1 
+} 
+} 
 },
-"geom15_vline_details": {
+"geom17_vline_details": {
  "geom": "vline",
-"classed": "geom15_vline_details",
+"classed": "geom17_vline_details",
 "aes": {
 "xintercept": "N",
 "key": "1",
@@ -560,11 +728,17 @@
  "showSelected1" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom17_vline_details_chunk1.tsv": {
+ "bytes":     5067,
+"rows": 67 
+} 
+} 
 },
-"geom16_text_details": {
- "geom": "text",
-"classed": "geom16_text_details",
+"geom18_labelaligned_details": {
+ "geom": "label_aligned",
+"classed": "geom18_labelaligned_details",
 "aes": {
 "x": "N",
 "y": "0",
@@ -573,14 +747,16 @@
 "showSelected1": "Commit"
 },
 "params": {
- "parse": false,
-"check_overlap": false,
+ "label_r":     0.15,
+"alignment": "vertical",
+"min_distance":      0.1,
+"background_rect": true,
 "na.rm": false,
 "na.rm": false,
+"hjust":        1,
 "colour": "#7F7F7F",
 "showSelected": "Commit",
-"help_showSelected": "Commit",
-"anchor": "end" 
+"help_showSelected": "Commit" 
 },
 "types": {
 "x": "numeric",
@@ -599,11 +775,17 @@
  "showSelected1" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom18_labelaligned_details_chunk1.tsv": {
+ "bytes":     7824,
+"rows": 67 
+} 
+} 
 },
-"geom17_ribbon_details": {
+"geom19_ribbon_details": {
  "geom": "ribbon",
-"classed": "geom17_ribbon_details",
+"classed": "geom19_ribbon_details",
 "aes": {
 "x": "N",
 "ymin": "min",
@@ -661,16 +843,16 @@
 "Before-Parent4558 793f8545c363d222de18ac892bc7abb80154e724": 5,
 "Before-Parent4558 b417000b570133d1d014a4745163142d0c68e195": 6,
 "PR4164-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c": 7,
-"PR4164-Fast 0c7c90cbe0f5d742b9703e3f07dd4c7c52e08523": 8,
-"PR4164-Fast 0ebe04b8afdb2d159654e5bdeedf381e17b67141": 9,
+"PR4164-Fast 0912a667a666221515c4ceea77981b25db77c835": 8,
+"PR4164-Fast 1ca9cf6ba12fc9cdee5138f2b7198fe3008318dd": 9,
 "PR4164-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154": 10,
-"PR4164-Fast 82718b612973ff25fda8e6269c817d359985a85e": 11,
-"PR4164-Fast 851467f49e0c3b1a1d3fb7e9273dac706f0a7453": 12,
-"PR4164-Fast 906d026befa1b8c63472f1822714d40b91114103": 13,
-"PR4164-Fast b3acef8f9694cd4fd45f6fbf15f41943d9efced5": 14,
-"PR4164-Fast b3acf2ad13848150e87c414f3edcc413c71fd977": 15,
-"PR4164-Fast bbe7563f9e8d9fb172eeade319850db0f5c6fe20": 16,
-"PR4164-Fast e13f99379f09dd928fd186950828903d97e7a844": 17,
+"PR4164-Fast 35dbf06ba784591b4b10535045d789b987cc5e5d": 11,
+"PR4164-Fast 596f65d53efee3918d62e9dddb69acda37778876": 12,
+"PR4164-Fast 59f966cf6839a0494e42ed1ab98616eea03dcb36": 13,
+"PR4164-Fast 82718b612973ff25fda8e6269c817d359985a85e": 14,
+"PR4164-Fast 931e8e2fe3e38601f0ee3f5fffe02ed323f97d54": 15,
+"PR4164-Fast b9f02114f73791198e3d9f703232aa9c528f0581": 16,
+"PR4164-Fast e4d20fed315f72b90c94a44371a90d8e2d9a67d1": 17,
 "PR4164-Parent4491 1cb18e384728c46eb620edbadf930d677279e304": 18,
 "PR4164-Parent4491 3a5ed9b4eda89b47c7bbcfe96930947d067d199e": 19,
 "PR4164-Parent4491 460b919ed97f2b04079c69a606fe76dd2cd07e1f": 20,
@@ -679,43 +861,328 @@
 "PR4164-Parent4491 862d8ac897489e92d2d2db1ad3bc59498098280f": 23,
 "PR4164-Parent4491 ba32f3cba38ec270587e395f6e6c26a80be36be6": 24,
 "PR4164-Parent4491 bde23bcdcbcf0b41d4f7cc097e0fe889c13a431f": 25,
-"PR4164-Parent5463 0310dc18b200904d2d8c084caecd9ea885afce0c": 26,
-"PR4164-Parent5463 0f942123fc2221f3166caca8c61ce6a2e7ecf36e": 27,
-"PR4164-Parent5463 19065fba64f9b48930d8e51573d01976cbfb25a6": 28,
-"PR4164-Parent5463 1bc1b4095b99ce101b87b38017b6854614934380": 29,
-"PR4164-Parent5463 3fa8b20435d33b3d4b5c26fd9b0ac14c10b98800": 30,
-"PR4164-Parent5463 53e15854bb2c4d2faa7184a3c782cce40e9210f2": 31,
-"PR4164-Parent5463 72bcdea8df042a4c6ddf65ea1394e8788fab4810": 32,
-"PR4164-Parent5463 85adf09e3463838d547977ae9bc75e3b37f9cbaf": 33,
-"PR4164-Parent5463 fbbf8c43cadd32c8db4ae8035029c251f37c18d0": 34,
-"PR4491-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e": 35,
-"PR4491-Parent7401 0895fa247afcf6b38044bd5f56c0d209691ddb31": 36,
-"PR4491-Parent7401 0c6c567b53389169b37c30c969270c5933a151b4": 37,
-"PR4491-Parent7401 19b7866112614db53eb3e909c097407d91cd6738": 38,
-"PR4491-Parent7401 20333c19cc1a38dd0cbf41611bd9ae03ee13fede": 39,
-"PR4491-Parent7401 3f190612ead213de237ec54116d72274c0035b3b": 40,
-"PR4491-Parent7401 9acf6d974d297bbfeb5a6eda3de76db9accc7acf": 41,
-"PR4491-Parent7401 9e6e45301ea89227414a4f6df1ffc679c5c7ef1c": 42,
-"PR4491-Parent7401 b303cd4cea2c31378ee22cea053cd9f60a2fd4e8": 43,
-"PR4491-Parent7401 b41a653fd0f1f32dd2c1a6e31ed4f8833085185e": 44,
-"PR4491-Parent7401 e11a09b523039c4822cd4bbd2d0c7e7fbc6e7f94": 45,
-"PR4558-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c": 46,
-"PR4558-Fast 14d7f8b2f2fa050df6ebb0b059840659348777d1": 47,
-"PR4558-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154": 48,
-"PR4558-Fast 4d30c7f2437dd17debd19d34ed1c28f6bf8e5484": 49,
-"PR4558-Fast 6a70af68416e8310f2193b4a644a57e6c8253592": 50,
-"PR4558-Fast 77ba20e4eaf8edb90421207b76d4c483bd77e52f": 51,
-"PR4558-Fast 8ff68f0c25961c95aa077ca16e06ad49b555ec07": 52,
-"PR4558-Fast a8ad00fc93f1f5d293ee48b63f39468febef6f75": 53,
-"PR4558-Fast cabd30bf21694c4e004a9010073836007436beb3": 54,
-"PR4558-Fast cfa947febfa69eaee828c17d85999639df446294": 55,
-"PR4558-Fast d3d00192e025cc7c967ed14984169eeb77410ff7": 56 
+"PR4164-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e": 26,
+"PR4164-Parent7401 155bb87826e38ea054000ae24a67d945d297ea93": 27,
+"PR4164-Parent7401 15a4d74e234b2924f582702bb30c12bd55cd157c": 28,
+"PR4164-Parent7401 19b7866112614db53eb3e909c097407d91cd6738": 29,
+"PR4164-Parent7401 3581f129a1b59d0c573ee2ea520415946af91b42": 30,
+"PR4164-Parent7401 5eb46e817a99585c3811b4e848e9c6fa7f418564": 31,
+"PR4164-Parent7401 6f2358b36f9ab03fd06dcf23b35c825c4dc70984": 32,
+"PR4164-Parent7401 cd02c08698bc475aefcf9ab7c4c011b126b1639e": 33,
+"PR4164-Parent7401 cde7333938a590a3cddbda1b02103650e2f55d15": 34,
+"PR4164-Parent7401 dd2134e9aad6fd9d432b1cc0a35ca9c33fcd5dca": 35,
+"PR4164-Parent7401 f5a1e09328fef5f8a4c5e225bc5b75ca09700f76": 36,
+"PR4491-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e": 37,
+"PR4491-Parent7401 0895fa247afcf6b38044bd5f56c0d209691ddb31": 38,
+"PR4491-Parent7401 0c6c567b53389169b37c30c969270c5933a151b4": 39,
+"PR4491-Parent7401 19b7866112614db53eb3e909c097407d91cd6738": 40,
+"PR4491-Parent7401 20333c19cc1a38dd0cbf41611bd9ae03ee13fede": 41,
+"PR4491-Parent7401 3f190612ead213de237ec54116d72274c0035b3b": 42,
+"PR4491-Parent7401 9acf6d974d297bbfeb5a6eda3de76db9accc7acf": 43,
+"PR4491-Parent7401 9e6e45301ea89227414a4f6df1ffc679c5c7ef1c": 44,
+"PR4491-Parent7401 b303cd4cea2c31378ee22cea053cd9f60a2fd4e8": 45,
+"PR4491-Parent7401 b41a653fd0f1f32dd2c1a6e31ed4f8833085185e": 46,
+"PR4491-Parent7401 e11a09b523039c4822cd4bbd2d0c7e7fbc6e7f94": 47,
+"PR4558-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c": 48,
+"PR4558-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154": 49,
+"PR4558-Fast 6f8bb9ea49e5b43c0f573ed268157bffbb6a2ab5": 50,
+"PR4558-Fast a325db9e0c6a0cd1076c086d5fc17a548bccd1a5": 51,
+"PR4558-Fast aea17854498508866f3e6c69bec7537fdb1bbf69": 52,
+"PR4558-Fast b472d8638485e4117919dc1508e7a3334f03cd0c": 53,
+"PR4558-Fast bc7f5aff76188a0cbc31a21a21926ab4c184cb52": 54,
+"PR4558-Fast d3d00192e025cc7c967ed14984169eeb77410ff7": 55,
+"PR4558-Fast d6ac127b6ec5c50008e484489430236ae8cc18d4": 56,
+"PR4558-Fast ef211a1f1af453cb27fb24bfca13edd63f134bef": 57,
+"PR4558-Fast f972c256daa634ca4d9fd255a897992f5ec4b993": 58,
+"PR4558-Parent5463 0310dc18b200904d2d8c084caecd9ea885afce0c": 59,
+"PR4558-Parent5463 1eadb95ae1f2d5be5b1b6bf89d8db06450d4b9cc": 60,
+"PR4558-Parent5463 354cf84dd3be62dbddd147f4e6ca8ad0b099f254": 61,
+"PR4558-Parent5463 3fa8b20435d33b3d4b5c26fd9b0ac14c10b98800": 62,
+"PR4558-Parent5463 5f86efd0c8ed5035dca4511d0b2b23e549dcf087": 63,
+"PR4558-Parent5463 6924483890bfc9a08d481ce4d0a99660e7abb433": 64,
+"PR4558-Parent5463 85adf09e3463838d547977ae9bc75e3b37f9cbaf": 65,
+"PR4558-Parent5463 89c6b1b4b02048b1e5d8fc93ed58b9f6f50715eb": 66,
+"PR4558-Parent5463 fbbf8c43cadd32c8db4ae8035029c251f37c18d0": 67 
 },
-"total": 56 
+"total": 67,
+"chunk_info": {
+ "geom19_ribbon_details_chunk_common.tsv": {
+ "bytes":      122,
+"rows": 3 
 },
-"geom18_line_details": {
+"geom19_ribbon_details_chunk1.tsv": {
+ "bytes":     2874,
+"rows": 52 
+},
+"geom19_ribbon_details_chunk2.tsv": {
+ "bytes":     2878,
+"rows": 52 
+},
+"geom19_ribbon_details_chunk3.tsv": {
+ "bytes":     2760,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk4.tsv": {
+ "bytes":     2765,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk5.tsv": {
+ "bytes":     2879,
+"rows": 52 
+},
+"geom19_ribbon_details_chunk6.tsv": {
+ "bytes":     2763,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk7.tsv": {
+ "bytes":     3206,
+"rows": 58 
+},
+"geom19_ribbon_details_chunk8.tsv": {
+ "bytes":     2988,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk9.tsv": {
+ "bytes":     2985,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk10.tsv": {
+ "bytes":     2988,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk11.tsv": {
+ "bytes":     3203,
+"rows": 58 
+},
+"geom19_ribbon_details_chunk12.tsv": {
+ "bytes":     3209,
+"rows": 58 
+},
+"geom19_ribbon_details_chunk13.tsv": {
+ "bytes":     2986,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk14.tsv": {
+ "bytes":     3209,
+"rows": 58 
+},
+"geom19_ribbon_details_chunk15.tsv": {
+ "bytes":     2983,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk16.tsv": {
+ "bytes":     2992,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk17.tsv": {
+ "bytes":     2985,
+"rows": 54 
+},
+"geom19_ribbon_details_chunk18.tsv": {
+ "bytes":     2769,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk19.tsv": {
+ "bytes":     2716,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk20.tsv": {
+ "bytes":     2765,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk21.tsv": {
+ "bytes":     2764,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk22.tsv": {
+ "bytes":     2712,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk23.tsv": {
+ "bytes":     2768,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk24.tsv": {
+ "bytes":     2770,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk25.tsv": {
+ "bytes":     2757,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk26.tsv": {
+ "bytes":     2717,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk27.tsv": {
+ "bytes":     2762,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk28.tsv": {
+ "bytes":     2718,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk29.tsv": {
+ "bytes":     2774,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk30.tsv": {
+ "bytes":     2711,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk31.tsv": {
+ "bytes":     2714,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk32.tsv": {
+ "bytes":     2719,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk33.tsv": {
+ "bytes":     2770,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk34.tsv": {
+ "bytes":     2768,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk35.tsv": {
+ "bytes":     2775,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk36.tsv": {
+ "bytes":     2766,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk37.tsv": {
+ "bytes":     2715,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk38.tsv": {
+ "bytes":     2771,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk39.tsv": {
+ "bytes":     2769,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk40.tsv": {
+ "bytes":     2771,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk41.tsv": {
+ "bytes":     2768,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk42.tsv": {
+ "bytes":     2769,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk43.tsv": {
+ "bytes":     2770,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk44.tsv": {
+ "bytes":     2713,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk45.tsv": {
+ "bytes":     2769,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk46.tsv": {
+ "bytes":     2767,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk47.tsv": {
+ "bytes":     2769,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk48.tsv": {
+ "bytes":     3257,
+"rows": 59 
+},
+"geom19_ribbon_details_chunk49.tsv": {
+ "bytes":     3046,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk50.tsv": {
+ "bytes":     3048,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk51.tsv": {
+ "bytes":     3044,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk52.tsv": {
+ "bytes":     3267,
+"rows": 59 
+},
+"geom19_ribbon_details_chunk53.tsv": {
+ "bytes":     3048,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk54.tsv": {
+ "bytes":     3042,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk55.tsv": {
+ "bytes":     3042,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk56.tsv": {
+ "bytes":     3263,
+"rows": 59 
+},
+"geom19_ribbon_details_chunk57.tsv": {
+ "bytes":     3046,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk58.tsv": {
+ "bytes":     3043,
+"rows": 55 
+},
+"geom19_ribbon_details_chunk59.tsv": {
+ "bytes":     2764,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk60.tsv": {
+ "bytes":     2711,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk61.tsv": {
+ "bytes":     2768,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk62.tsv": {
+ "bytes":     2760,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk63.tsv": {
+ "bytes":     2708,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk64.tsv": {
+ "bytes":     2771,
+"rows": 50 
+},
+"geom19_ribbon_details_chunk65.tsv": {
+ "bytes":     2715,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk66.tsv": {
+ "bytes":     2710,
+"rows": 49 
+},
+"geom19_ribbon_details_chunk67.tsv": {
+ "bytes":     2704,
+"rows": 49 
+} 
+} 
+},
+"geom20_line_details": {
  "geom": "line",
-"classed": "geom18_line_details",
+"classed": "geom20_line_details",
 "aes": {
 "x": "N",
 "y": "median",
@@ -767,16 +1234,16 @@
 "Before-Parent4558 793f8545c363d222de18ac892bc7abb80154e724": 5,
 "Before-Parent4558 b417000b570133d1d014a4745163142d0c68e195": 6,
 "PR4164-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c": 7,
-"PR4164-Fast 0c7c90cbe0f5d742b9703e3f07dd4c7c52e08523": 8,
-"PR4164-Fast 0ebe04b8afdb2d159654e5bdeedf381e17b67141": 9,
+"PR4164-Fast 0912a667a666221515c4ceea77981b25db77c835": 8,
+"PR4164-Fast 1ca9cf6ba12fc9cdee5138f2b7198fe3008318dd": 9,
 "PR4164-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154": 10,
-"PR4164-Fast 82718b612973ff25fda8e6269c817d359985a85e": 11,
-"PR4164-Fast 851467f49e0c3b1a1d3fb7e9273dac706f0a7453": 12,
-"PR4164-Fast 906d026befa1b8c63472f1822714d40b91114103": 13,
-"PR4164-Fast b3acef8f9694cd4fd45f6fbf15f41943d9efced5": 14,
-"PR4164-Fast b3acf2ad13848150e87c414f3edcc413c71fd977": 15,
-"PR4164-Fast bbe7563f9e8d9fb172eeade319850db0f5c6fe20": 16,
-"PR4164-Fast e13f99379f09dd928fd186950828903d97e7a844": 17,
+"PR4164-Fast 35dbf06ba784591b4b10535045d789b987cc5e5d": 11,
+"PR4164-Fast 596f65d53efee3918d62e9dddb69acda37778876": 12,
+"PR4164-Fast 59f966cf6839a0494e42ed1ab98616eea03dcb36": 13,
+"PR4164-Fast 82718b612973ff25fda8e6269c817d359985a85e": 14,
+"PR4164-Fast 931e8e2fe3e38601f0ee3f5fffe02ed323f97d54": 15,
+"PR4164-Fast b9f02114f73791198e3d9f703232aa9c528f0581": 16,
+"PR4164-Fast e4d20fed315f72b90c94a44371a90d8e2d9a67d1": 17,
 "PR4164-Parent4491 1cb18e384728c46eb620edbadf930d677279e304": 18,
 "PR4164-Parent4491 3a5ed9b4eda89b47c7bbcfe96930947d067d199e": 19,
 "PR4164-Parent4491 460b919ed97f2b04079c69a606fe76dd2cd07e1f": 20,
@@ -785,43 +1252,328 @@
 "PR4164-Parent4491 862d8ac897489e92d2d2db1ad3bc59498098280f": 23,
 "PR4164-Parent4491 ba32f3cba38ec270587e395f6e6c26a80be36be6": 24,
 "PR4164-Parent4491 bde23bcdcbcf0b41d4f7cc097e0fe889c13a431f": 25,
-"PR4164-Parent5463 0310dc18b200904d2d8c084caecd9ea885afce0c": 26,
-"PR4164-Parent5463 0f942123fc2221f3166caca8c61ce6a2e7ecf36e": 27,
-"PR4164-Parent5463 19065fba64f9b48930d8e51573d01976cbfb25a6": 28,
-"PR4164-Parent5463 1bc1b4095b99ce101b87b38017b6854614934380": 29,
-"PR4164-Parent5463 3fa8b20435d33b3d4b5c26fd9b0ac14c10b98800": 30,
-"PR4164-Parent5463 53e15854bb2c4d2faa7184a3c782cce40e9210f2": 31,
-"PR4164-Parent5463 72bcdea8df042a4c6ddf65ea1394e8788fab4810": 32,
-"PR4164-Parent5463 85adf09e3463838d547977ae9bc75e3b37f9cbaf": 33,
-"PR4164-Parent5463 fbbf8c43cadd32c8db4ae8035029c251f37c18d0": 34,
-"PR4491-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e": 35,
-"PR4491-Parent7401 0895fa247afcf6b38044bd5f56c0d209691ddb31": 36,
-"PR4491-Parent7401 0c6c567b53389169b37c30c969270c5933a151b4": 37,
-"PR4491-Parent7401 19b7866112614db53eb3e909c097407d91cd6738": 38,
-"PR4491-Parent7401 20333c19cc1a38dd0cbf41611bd9ae03ee13fede": 39,
-"PR4491-Parent7401 3f190612ead213de237ec54116d72274c0035b3b": 40,
-"PR4491-Parent7401 9acf6d974d297bbfeb5a6eda3de76db9accc7acf": 41,
-"PR4491-Parent7401 9e6e45301ea89227414a4f6df1ffc679c5c7ef1c": 42,
-"PR4491-Parent7401 b303cd4cea2c31378ee22cea053cd9f60a2fd4e8": 43,
-"PR4491-Parent7401 b41a653fd0f1f32dd2c1a6e31ed4f8833085185e": 44,
-"PR4491-Parent7401 e11a09b523039c4822cd4bbd2d0c7e7fbc6e7f94": 45,
-"PR4558-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c": 46,
-"PR4558-Fast 14d7f8b2f2fa050df6ebb0b059840659348777d1": 47,
-"PR4558-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154": 48,
-"PR4558-Fast 4d30c7f2437dd17debd19d34ed1c28f6bf8e5484": 49,
-"PR4558-Fast 6a70af68416e8310f2193b4a644a57e6c8253592": 50,
-"PR4558-Fast 77ba20e4eaf8edb90421207b76d4c483bd77e52f": 51,
-"PR4558-Fast 8ff68f0c25961c95aa077ca16e06ad49b555ec07": 52,
-"PR4558-Fast a8ad00fc93f1f5d293ee48b63f39468febef6f75": 53,
-"PR4558-Fast cabd30bf21694c4e004a9010073836007436beb3": 54,
-"PR4558-Fast cfa947febfa69eaee828c17d85999639df446294": 55,
-"PR4558-Fast d3d00192e025cc7c967ed14984169eeb77410ff7": 56 
+"PR4164-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e": 26,
+"PR4164-Parent7401 155bb87826e38ea054000ae24a67d945d297ea93": 27,
+"PR4164-Parent7401 15a4d74e234b2924f582702bb30c12bd55cd157c": 28,
+"PR4164-Parent7401 19b7866112614db53eb3e909c097407d91cd6738": 29,
+"PR4164-Parent7401 3581f129a1b59d0c573ee2ea520415946af91b42": 30,
+"PR4164-Parent7401 5eb46e817a99585c3811b4e848e9c6fa7f418564": 31,
+"PR4164-Parent7401 6f2358b36f9ab03fd06dcf23b35c825c4dc70984": 32,
+"PR4164-Parent7401 cd02c08698bc475aefcf9ab7c4c011b126b1639e": 33,
+"PR4164-Parent7401 cde7333938a590a3cddbda1b02103650e2f55d15": 34,
+"PR4164-Parent7401 dd2134e9aad6fd9d432b1cc0a35ca9c33fcd5dca": 35,
+"PR4164-Parent7401 f5a1e09328fef5f8a4c5e225bc5b75ca09700f76": 36,
+"PR4491-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e": 37,
+"PR4491-Parent7401 0895fa247afcf6b38044bd5f56c0d209691ddb31": 38,
+"PR4491-Parent7401 0c6c567b53389169b37c30c969270c5933a151b4": 39,
+"PR4491-Parent7401 19b7866112614db53eb3e909c097407d91cd6738": 40,
+"PR4491-Parent7401 20333c19cc1a38dd0cbf41611bd9ae03ee13fede": 41,
+"PR4491-Parent7401 3f190612ead213de237ec54116d72274c0035b3b": 42,
+"PR4491-Parent7401 9acf6d974d297bbfeb5a6eda3de76db9accc7acf": 43,
+"PR4491-Parent7401 9e6e45301ea89227414a4f6df1ffc679c5c7ef1c": 44,
+"PR4491-Parent7401 b303cd4cea2c31378ee22cea053cd9f60a2fd4e8": 45,
+"PR4491-Parent7401 b41a653fd0f1f32dd2c1a6e31ed4f8833085185e": 46,
+"PR4491-Parent7401 e11a09b523039c4822cd4bbd2d0c7e7fbc6e7f94": 47,
+"PR4558-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c": 48,
+"PR4558-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154": 49,
+"PR4558-Fast 6f8bb9ea49e5b43c0f573ed268157bffbb6a2ab5": 50,
+"PR4558-Fast a325db9e0c6a0cd1076c086d5fc17a548bccd1a5": 51,
+"PR4558-Fast aea17854498508866f3e6c69bec7537fdb1bbf69": 52,
+"PR4558-Fast b472d8638485e4117919dc1508e7a3334f03cd0c": 53,
+"PR4558-Fast bc7f5aff76188a0cbc31a21a21926ab4c184cb52": 54,
+"PR4558-Fast d3d00192e025cc7c967ed14984169eeb77410ff7": 55,
+"PR4558-Fast d6ac127b6ec5c50008e484489430236ae8cc18d4": 56,
+"PR4558-Fast ef211a1f1af453cb27fb24bfca13edd63f134bef": 57,
+"PR4558-Fast f972c256daa634ca4d9fd255a897992f5ec4b993": 58,
+"PR4558-Parent5463 0310dc18b200904d2d8c084caecd9ea885afce0c": 59,
+"PR4558-Parent5463 1eadb95ae1f2d5be5b1b6bf89d8db06450d4b9cc": 60,
+"PR4558-Parent5463 354cf84dd3be62dbddd147f4e6ca8ad0b099f254": 61,
+"PR4558-Parent5463 3fa8b20435d33b3d4b5c26fd9b0ac14c10b98800": 62,
+"PR4558-Parent5463 5f86efd0c8ed5035dca4511d0b2b23e549dcf087": 63,
+"PR4558-Parent5463 6924483890bfc9a08d481ce4d0a99660e7abb433": 64,
+"PR4558-Parent5463 85adf09e3463838d547977ae9bc75e3b37f9cbaf": 65,
+"PR4558-Parent5463 89c6b1b4b02048b1e5d8fc93ed58b9f6f50715eb": 66,
+"PR4558-Parent5463 fbbf8c43cadd32c8db4ae8035029c251f37c18d0": 67 
 },
-"total": 56 
+"total": 67,
+"chunk_info": {
+ "geom20_line_details_chunk_common.tsv": {
+ "bytes":       93,
+"rows": 3 
 },
-"geom19_point_details": {
+"geom20_line_details_chunk1.tsv": {
+ "bytes":     1940,
+"rows": 52 
+},
+"geom20_line_details_chunk2.tsv": {
+ "bytes":     1939,
+"rows": 52 
+},
+"geom20_line_details_chunk3.tsv": {
+ "bytes":     1864,
+"rows": 50 
+},
+"geom20_line_details_chunk4.tsv": {
+ "bytes":     1859,
+"rows": 50 
+},
+"geom20_line_details_chunk5.tsv": {
+ "bytes":     1938,
+"rows": 52 
+},
+"geom20_line_details_chunk6.tsv": {
+ "bytes":     1865,
+"rows": 50 
+},
+"geom20_line_details_chunk7.tsv": {
+ "bytes":     2155,
+"rows": 58 
+},
+"geom20_line_details_chunk8.tsv": {
+ "bytes":     2010,
+"rows": 54 
+},
+"geom20_line_details_chunk9.tsv": {
+ "bytes":     2012,
+"rows": 54 
+},
+"geom20_line_details_chunk10.tsv": {
+ "bytes":     2013,
+"rows": 54 
+},
+"geom20_line_details_chunk11.tsv": {
+ "bytes":     2160,
+"rows": 58 
+},
+"geom20_line_details_chunk12.tsv": {
+ "bytes":     2160,
+"rows": 58 
+},
+"geom20_line_details_chunk13.tsv": {
+ "bytes":     2004,
+"rows": 54 
+},
+"geom20_line_details_chunk14.tsv": {
+ "bytes":     2161,
+"rows": 58 
+},
+"geom20_line_details_chunk15.tsv": {
+ "bytes":     2011,
+"rows": 54 
+},
+"geom20_line_details_chunk16.tsv": {
+ "bytes":     2013,
+"rows": 54 
+},
+"geom20_line_details_chunk17.tsv": {
+ "bytes":     2015,
+"rows": 54 
+},
+"geom20_line_details_chunk18.tsv": {
+ "bytes":     1855,
+"rows": 50 
+},
+"geom20_line_details_chunk19.tsv": {
+ "bytes":     1826,
+"rows": 49 
+},
+"geom20_line_details_chunk20.tsv": {
+ "bytes":     1862,
+"rows": 50 
+},
+"geom20_line_details_chunk21.tsv": {
+ "bytes":     1863,
+"rows": 50 
+},
+"geom20_line_details_chunk22.tsv": {
+ "bytes":     1828,
+"rows": 49 
+},
+"geom20_line_details_chunk23.tsv": {
+ "bytes":     1862,
+"rows": 50 
+},
+"geom20_line_details_chunk24.tsv": {
+ "bytes":     1866,
+"rows": 50 
+},
+"geom20_line_details_chunk25.tsv": {
+ "bytes":     1865,
+"rows": 50 
+},
+"geom20_line_details_chunk26.tsv": {
+ "bytes":     1823,
+"rows": 49 
+},
+"geom20_line_details_chunk27.tsv": {
+ "bytes":     1863,
+"rows": 50 
+},
+"geom20_line_details_chunk28.tsv": {
+ "bytes":     1829,
+"rows": 49 
+},
+"geom20_line_details_chunk29.tsv": {
+ "bytes":     1865,
+"rows": 50 
+},
+"geom20_line_details_chunk30.tsv": {
+ "bytes":     1828,
+"rows": 49 
+},
+"geom20_line_details_chunk31.tsv": {
+ "bytes":     1826,
+"rows": 49 
+},
+"geom20_line_details_chunk32.tsv": {
+ "bytes":     1825,
+"rows": 49 
+},
+"geom20_line_details_chunk33.tsv": {
+ "bytes":     1866,
+"rows": 50 
+},
+"geom20_line_details_chunk34.tsv": {
+ "bytes":     1865,
+"rows": 50 
+},
+"geom20_line_details_chunk35.tsv": {
+ "bytes":     1867,
+"rows": 50 
+},
+"geom20_line_details_chunk36.tsv": {
+ "bytes":     1864,
+"rows": 50 
+},
+"geom20_line_details_chunk37.tsv": {
+ "bytes":     1829,
+"rows": 49 
+},
+"geom20_line_details_chunk38.tsv": {
+ "bytes":     1865,
+"rows": 50 
+},
+"geom20_line_details_chunk39.tsv": {
+ "bytes":     1867,
+"rows": 50 
+},
+"geom20_line_details_chunk40.tsv": {
+ "bytes":     1863,
+"rows": 50 
+},
+"geom20_line_details_chunk41.tsv": {
+ "bytes":     1866,
+"rows": 50 
+},
+"geom20_line_details_chunk42.tsv": {
+ "bytes":     1861,
+"rows": 50 
+},
+"geom20_line_details_chunk43.tsv": {
+ "bytes":     1865,
+"rows": 50 
+},
+"geom20_line_details_chunk44.tsv": {
+ "bytes":     1824,
+"rows": 49 
+},
+"geom20_line_details_chunk45.tsv": {
+ "bytes":     1863,
+"rows": 50 
+},
+"geom20_line_details_chunk46.tsv": {
+ "bytes":     1864,
+"rows": 50 
+},
+"geom20_line_details_chunk47.tsv": {
+ "bytes":     1863,
+"rows": 50 
+},
+"geom20_line_details_chunk48.tsv": {
+ "bytes":     2194,
+"rows": 59 
+},
+"geom20_line_details_chunk49.tsv": {
+ "bytes":     2048,
+"rows": 55 
+},
+"geom20_line_details_chunk50.tsv": {
+ "bytes":     2051,
+"rows": 55 
+},
+"geom20_line_details_chunk51.tsv": {
+ "bytes":     2052,
+"rows": 55 
+},
+"geom20_line_details_chunk52.tsv": {
+ "bytes":     2195,
+"rows": 59 
+},
+"geom20_line_details_chunk53.tsv": {
+ "bytes":     2047,
+"rows": 55 
+},
+"geom20_line_details_chunk54.tsv": {
+ "bytes":     2051,
+"rows": 55 
+},
+"geom20_line_details_chunk55.tsv": {
+ "bytes":     2046,
+"rows": 55 
+},
+"geom20_line_details_chunk56.tsv": {
+ "bytes":     2191,
+"rows": 59 
+},
+"geom20_line_details_chunk57.tsv": {
+ "bytes":     2043,
+"rows": 55 
+},
+"geom20_line_details_chunk58.tsv": {
+ "bytes":     2051,
+"rows": 55 
+},
+"geom20_line_details_chunk59.tsv": {
+ "bytes":     1863,
+"rows": 50 
+},
+"geom20_line_details_chunk60.tsv": {
+ "bytes":     1829,
+"rows": 49 
+},
+"geom20_line_details_chunk61.tsv": {
+ "bytes":     1867,
+"rows": 50 
+},
+"geom20_line_details_chunk62.tsv": {
+ "bytes":     1867,
+"rows": 50 
+},
+"geom20_line_details_chunk63.tsv": {
+ "bytes":     1822,
+"rows": 49 
+},
+"geom20_line_details_chunk64.tsv": {
+ "bytes":     1860,
+"rows": 50 
+},
+"geom20_line_details_chunk65.tsv": {
+ "bytes":     1827,
+"rows": 49 
+},
+"geom20_line_details_chunk66.tsv": {
+ "bytes":     1826,
+"rows": 49 
+},
+"geom20_line_details_chunk67.tsv": {
+ "bytes":     1830,
+"rows": 49 
+} 
+} 
+},
+"geom21_point_details": {
  "geom": "point",
-"classed": "geom19_point_details",
+"classed": "geom21_point_details",
 "aes": {
 "x": "N",
 "y": "unit.value",
@@ -858,11 +1610,17 @@
 "showSelected2" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom21_point_details_chunk1.tsv": {
+ "bytes":    19258,
+"rows": 201 
+} 
+} 
 },
-"geom20_labelaligned_details": {
+"geom22_labelaligned_details": {
  "geom": "label_aligned",
-"classed": "geom20_labelaligned_details",
+"classed": "geom22_labelaligned_details",
 "aes": {
 "x": "N",
 "y": "unit.value",
@@ -905,11 +1663,17 @@
 "showSelected2" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom22_labelaligned_details_chunk1.tsv": {
+ "bytes":    20336,
+"rows": 201 
+} 
+} 
 },
-"geom21_text_details": {
+"geom23_text_details": {
  "geom": "text",
-"classed": "geom21_text_details",
+"classed": "geom23_text_details",
 "aes": {
 "x": "0",
 "y": "0",
@@ -946,11 +1710,17 @@
  "showSelected1" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom23_text_details_chunk1.tsv": {
+ "bytes":    13234,
+"rows": 67 
+} 
+} 
 },
-"geom22_tallrect_zoom": {
+"geom24_tallrect_zoom": {
  "geom": "tallrect",
-"classed": "geom22_tallrect_zoom",
+"classed": "geom24_tallrect_zoom",
 "aes": {
 "xmin": "rank_rel - 0.5",
 "xmax": "rank_rel + 0.5",
@@ -983,11 +1753,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom24_tallrect_zoom_chunk1.tsv": {
+ "bytes":     3932,
+"rows": 134 
+} 
+} 
 },
-"geom23_line_zoom": {
+"geom25_line_zoom": {
  "geom": "line",
-"classed": "geom23_line_zoom",
+"classed": "geom25_line_zoom",
 "aes": {
 "x": "rank_rel",
 "y": "value_norm",
@@ -999,7 +1775,7 @@
 "params": {
  "na.rm": false,
 "na.rm": false,
-"size":        1,
+"size":        2,
 "showSelected": [ "Bisect", "age" ],
 "help_showSelected": [ "Bisect", "age" ] 
 },
@@ -1025,11 +1801,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom25_line_zoom_chunk1.tsv": {
+ "bytes":    11246,
+"rows": 202 
+} 
+} 
 },
-"geom24_point_zoom": {
+"geom26_point_zoom": {
  "geom": "point",
-"classed": "geom24_point_zoom",
+"classed": "geom26_point_zoom",
 "aes": {
 "x": "rank_rel",
 "y": "value_norm",
@@ -1073,11 +1855,17 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom26_point_zoom_chunk1.tsv": {
+ "bytes":    27879,
+"rows": 402 
+} 
+} 
 },
-"geom25_tallrect_zoom": {
+"geom27_tallrect_zoom": {
  "geom": "tallrect",
-"classed": "geom25_tallrect_zoom",
+"classed": "geom27_tallrect_zoom",
 "aes": {
 "xmin": "rank_rel - 0.5",
 "xmax": "rank_rel + 0.5",
@@ -1116,11 +1904,18 @@
 "PANEL" 
 ],
 "chunks": 1,
-"total": 1 
+"total": 1,
+"chunk_info": {
+ "geom27_tallrect_zoom_chunk1.tsv": {
+ "bytes":    11587,
+"rows": 134 
+} 
+} 
 } 
 },
 "duration": {
  "Commit":     1000,
+"age":     1000,
 "Bisect":     1000 
 },
 "selectors": {
@@ -1132,10 +1927,10 @@
 "selected": [ "change", "0", "1" ],
 "levels": [ "change", "0", "1" ],
 "update": [
- "geom3_vline_bisects",
-"geom9_point_bisects",
+ "geom4_vline_bisects",
 "geom11_point_bisects",
-"geom24_point_zoom" 
+"geom13_point_bisects",
+"geom26_point_zoom" 
 ] 
 },
 "age": {
@@ -1146,16 +1941,18 @@
 "selected": [ "old", "new", "between" ],
 "levels": [ "old", "new", "between" ],
 "update": [
- "geom4_segment_bisects",
-"geom10_line_bisects",
-"geom11_point_bisects",
-"geom17_ribbon_details",
-"geom18_line_details",
-"geom19_point_details",
-"geom20_labelaligned_details",
-"geom23_line_zoom",
-"geom24_point_zoom" 
-] 
+ "geom6_segment_bisects",
+"geom9_point_bisects",
+"geom12_line_bisects",
+"geom13_point_bisects",
+"geom19_ribbon_details",
+"geom20_line_details",
+"geom21_point_details",
+"geom22_labelaligned_details",
+"geom25_line_zoom",
+"geom26_point_zoom" 
+],
+"duration":     1000 
 },
 "Bisect": {
  "is.variable.value": false,
@@ -1163,23 +1960,23 @@
 "showSelected": true,
 "clickSelects": true,
 "selected": "Before-Parent4558",
-"levels": [ "Before-Parent4558", "PR4164-Parent4491", "PR4164-Parent5463", "PR4491-Parent7401", "PR4164-Fast", "PR4558-Fast" ],
+"levels": [ "Before-Parent4558", "PR4164-Parent4491", "PR4558-Parent5463", "PR4491-Parent7401", "PR4164-Parent7401", "PR4164-Fast", "PR4558-Fast" ],
 "update": [
  "geom1_rect_bisects",
 "geom2_tallrect_bisects",
-"geom3_vline_bisects",
-"geom4_segment_bisects",
-"geom5_segment_bisects",
-"geom6_text_bisects",
-"geom7_point_bisects",
-"geom8_segment_bisects",
+"geom4_vline_bisects",
+"geom6_segment_bisects",
+"geom7_segment_bisects",
+"geom8_text_bisects",
 "geom9_point_bisects",
+"geom10_segment_bisects",
 "geom11_point_bisects",
-"geom12_tallrect_bisects",
-"geom22_tallrect_zoom",
-"geom23_line_zoom",
-"geom24_point_zoom",
-"geom25_tallrect_zoom" 
+"geom13_point_bisects",
+"geom14_tallrect_bisects",
+"geom24_tallrect_zoom",
+"geom25_line_zoom",
+"geom26_point_zoom",
+"geom27_tallrect_zoom" 
 ],
 "duration":     1000 
 },
@@ -1190,17 +1987,17 @@
 "showSelected": true,
 "chunks": "Commit",
 "selected": "Before-Parent4558 11ab05ab1b6cf5ca602f8632bc2a72d47e85583a",
-"levels": [ "Before-Parent4558 11ab05ab1b6cf5ca602f8632bc2a72d47e85583a", "Before-Parent4558 38328a3a69f5fead3abac8560a6c9f42f358a3f7", "Before-Parent4558 4aadde8f5a51cd7c8f3889964e7280432ec65bbc", "Before-Parent4558 4bda6dac7ede429434412ede26b71cfada76f33d", "Before-Parent4558 793f8545c363d222de18ac892bc7abb80154e724", "Before-Parent4558 b417000b570133d1d014a4745163142d0c68e195", "PR4164-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c", "PR4164-Fast 0c7c90cbe0f5d742b9703e3f07dd4c7c52e08523", "PR4164-Fast 0ebe04b8afdb2d159654e5bdeedf381e17b67141", "PR4164-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154", "PR4164-Fast 82718b612973ff25fda8e6269c817d359985a85e", "PR4164-Fast 851467f49e0c3b1a1d3fb7e9273dac706f0a7453", "PR4164-Fast 906d026befa1b8c63472f1822714d40b91114103", "PR4164-Fast b3acef8f9694cd4fd45f6fbf15f41943d9efced5", "PR4164-Fast b3acf2ad13848150e87c414f3edcc413c71fd977", "PR4164-Fast bbe7563f9e8d9fb172eeade319850db0f5c6fe20", "PR4164-Fast e13f99379f09dd928fd186950828903d97e7a844", "PR4164-Parent4491 1cb18e384728c46eb620edbadf930d677279e304", "PR4164-Parent4491 3a5ed9b4eda89b47c7bbcfe96930947d067d199e", "PR4164-Parent4491 460b919ed97f2b04079c69a606fe76dd2cd07e1f", "PR4164-Parent4491 588e0725320eacc5d8fc296ee9da4967cee198af", "PR4164-Parent4491 6f360be0b2a6cf425f6df751ca9a99ec5d35ed93", "PR4164-Parent4491 862d8ac897489e92d2d2db1ad3bc59498098280f", "PR4164-Parent4491 ba32f3cba38ec270587e395f6e6c26a80be36be6", "PR4164-Parent4491 bde23bcdcbcf0b41d4f7cc097e0fe889c13a431f", "PR4164-Parent5463 0310dc18b200904d2d8c084caecd9ea885afce0c", "PR4164-Parent5463 0f942123fc2221f3166caca8c61ce6a2e7ecf36e", "PR4164-Parent5463 19065fba64f9b48930d8e51573d01976cbfb25a6", "PR4164-Parent5463 1bc1b4095b99ce101b87b38017b6854614934380", "PR4164-Parent5463 3fa8b20435d33b3d4b5c26fd9b0ac14c10b98800", "PR4164-Parent5463 53e15854bb2c4d2faa7184a3c782cce40e9210f2", "PR4164-Parent5463 72bcdea8df042a4c6ddf65ea1394e8788fab4810", "PR4164-Parent5463 85adf09e3463838d547977ae9bc75e3b37f9cbaf", "PR4164-Parent5463 fbbf8c43cadd32c8db4ae8035029c251f37c18d0", "PR4491-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e", "PR4491-Parent7401 0895fa247afcf6b38044bd5f56c0d209691ddb31", "PR4491-Parent7401 0c6c567b53389169b37c30c969270c5933a151b4", "PR4491-Parent7401 19b7866112614db53eb3e909c097407d91cd6738", "PR4491-Parent7401 20333c19cc1a38dd0cbf41611bd9ae03ee13fede", "PR4491-Parent7401 3f190612ead213de237ec54116d72274c0035b3b", "PR4491-Parent7401 9acf6d974d297bbfeb5a6eda3de76db9accc7acf", "PR4491-Parent7401 9e6e45301ea89227414a4f6df1ffc679c5c7ef1c", "PR4491-Parent7401 b303cd4cea2c31378ee22cea053cd9f60a2fd4e8", "PR4491-Parent7401 b41a653fd0f1f32dd2c1a6e31ed4f8833085185e", "PR4491-Parent7401 e11a09b523039c4822cd4bbd2d0c7e7fbc6e7f94", "PR4558-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c", "PR4558-Fast 14d7f8b2f2fa050df6ebb0b059840659348777d1", "PR4558-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154", "PR4558-Fast 4d30c7f2437dd17debd19d34ed1c28f6bf8e5484", "PR4558-Fast 6a70af68416e8310f2193b4a644a57e6c8253592", "PR4558-Fast 77ba20e4eaf8edb90421207b76d4c483bd77e52f", "PR4558-Fast 8ff68f0c25961c95aa077ca16e06ad49b555ec07", "PR4558-Fast a8ad00fc93f1f5d293ee48b63f39468febef6f75", "PR4558-Fast cabd30bf21694c4e004a9010073836007436beb3", "PR4558-Fast cfa947febfa69eaee828c17d85999639df446294", "PR4558-Fast d3d00192e025cc7c967ed14984169eeb77410ff7" ],
+"levels": [ "Before-Parent4558 11ab05ab1b6cf5ca602f8632bc2a72d47e85583a", "Before-Parent4558 38328a3a69f5fead3abac8560a6c9f42f358a3f7", "Before-Parent4558 4aadde8f5a51cd7c8f3889964e7280432ec65bbc", "Before-Parent4558 4bda6dac7ede429434412ede26b71cfada76f33d", "Before-Parent4558 793f8545c363d222de18ac892bc7abb80154e724", "Before-Parent4558 b417000b570133d1d014a4745163142d0c68e195", "PR4164-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c", "PR4164-Fast 0912a667a666221515c4ceea77981b25db77c835", "PR4164-Fast 1ca9cf6ba12fc9cdee5138f2b7198fe3008318dd", "PR4164-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154", "PR4164-Fast 35dbf06ba784591b4b10535045d789b987cc5e5d", "PR4164-Fast 596f65d53efee3918d62e9dddb69acda37778876", "PR4164-Fast 59f966cf6839a0494e42ed1ab98616eea03dcb36", "PR4164-Fast 82718b612973ff25fda8e6269c817d359985a85e", "PR4164-Fast 931e8e2fe3e38601f0ee3f5fffe02ed323f97d54", "PR4164-Fast b9f02114f73791198e3d9f703232aa9c528f0581", "PR4164-Fast e4d20fed315f72b90c94a44371a90d8e2d9a67d1", "PR4164-Parent4491 1cb18e384728c46eb620edbadf930d677279e304", "PR4164-Parent4491 3a5ed9b4eda89b47c7bbcfe96930947d067d199e", "PR4164-Parent4491 460b919ed97f2b04079c69a606fe76dd2cd07e1f", "PR4164-Parent4491 588e0725320eacc5d8fc296ee9da4967cee198af", "PR4164-Parent4491 6f360be0b2a6cf425f6df751ca9a99ec5d35ed93", "PR4164-Parent4491 862d8ac897489e92d2d2db1ad3bc59498098280f", "PR4164-Parent4491 ba32f3cba38ec270587e395f6e6c26a80be36be6", "PR4164-Parent4491 bde23bcdcbcf0b41d4f7cc097e0fe889c13a431f", "PR4164-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e", "PR4164-Parent7401 155bb87826e38ea054000ae24a67d945d297ea93", "PR4164-Parent7401 15a4d74e234b2924f582702bb30c12bd55cd157c", "PR4164-Parent7401 19b7866112614db53eb3e909c097407d91cd6738", "PR4164-Parent7401 3581f129a1b59d0c573ee2ea520415946af91b42", "PR4164-Parent7401 5eb46e817a99585c3811b4e848e9c6fa7f418564", "PR4164-Parent7401 6f2358b36f9ab03fd06dcf23b35c825c4dc70984", "PR4164-Parent7401 cd02c08698bc475aefcf9ab7c4c011b126b1639e", "PR4164-Parent7401 cde7333938a590a3cddbda1b02103650e2f55d15", "PR4164-Parent7401 dd2134e9aad6fd9d432b1cc0a35ca9c33fcd5dca", "PR4164-Parent7401 f5a1e09328fef5f8a4c5e225bc5b75ca09700f76", "PR4491-Parent7401 052f8da64c16a099b2889ac8906a2f24ce6f3a9e", "PR4491-Parent7401 0895fa247afcf6b38044bd5f56c0d209691ddb31", "PR4491-Parent7401 0c6c567b53389169b37c30c969270c5933a151b4", "PR4491-Parent7401 19b7866112614db53eb3e909c097407d91cd6738", "PR4491-Parent7401 20333c19cc1a38dd0cbf41611bd9ae03ee13fede", "PR4491-Parent7401 3f190612ead213de237ec54116d72274c0035b3b", "PR4491-Parent7401 9acf6d974d297bbfeb5a6eda3de76db9accc7acf", "PR4491-Parent7401 9e6e45301ea89227414a4f6df1ffc679c5c7ef1c", "PR4491-Parent7401 b303cd4cea2c31378ee22cea053cd9f60a2fd4e8", "PR4491-Parent7401 b41a653fd0f1f32dd2c1a6e31ed4f8833085185e", "PR4491-Parent7401 e11a09b523039c4822cd4bbd2d0c7e7fbc6e7f94", "PR4558-Fast 0216983c51e03e3f61d5e6f08f4ba0c42cceb22c", "PR4558-Fast 20b463c9592c07d05ad2e89a25f84f0b998d6154", "PR4558-Fast 6f8bb9ea49e5b43c0f573ed268157bffbb6a2ab5", "PR4558-Fast a325db9e0c6a0cd1076c086d5fc17a548bccd1a5", "PR4558-Fast aea17854498508866f3e6c69bec7537fdb1bbf69", "PR4558-Fast b472d8638485e4117919dc1508e7a3334f03cd0c", "PR4558-Fast bc7f5aff76188a0cbc31a21a21926ab4c184cb52", "PR4558-Fast d3d00192e025cc7c967ed14984169eeb77410ff7", "PR4558-Fast d6ac127b6ec5c50008e484489430236ae8cc18d4", "PR4558-Fast ef211a1f1af453cb27fb24bfca13edd63f134bef", "PR4558-Fast f972c256daa634ca4d9fd255a897992f5ec4b993", "PR4558-Parent5463 0310dc18b200904d2d8c084caecd9ea885afce0c", "PR4558-Parent5463 1eadb95ae1f2d5be5b1b6bf89d8db06450d4b9cc", "PR4558-Parent5463 354cf84dd3be62dbddd147f4e6ca8ad0b099f254", "PR4558-Parent5463 3fa8b20435d33b3d4b5c26fd9b0ac14c10b98800", "PR4558-Parent5463 5f86efd0c8ed5035dca4511d0b2b23e549dcf087", "PR4558-Parent5463 6924483890bfc9a08d481ce4d0a99660e7abb433", "PR4558-Parent5463 85adf09e3463838d547977ae9bc75e3b37f9cbaf", "PR4558-Parent5463 89c6b1b4b02048b1e5d8fc93ed58b9f6f50715eb", "PR4558-Parent5463 fbbf8c43cadd32c8db4ae8035029c251f37c18d0" ],
 "update": [
- "geom12_tallrect_bisects",
-"geom15_vline_details",
-"geom16_text_details",
-"geom17_ribbon_details",
-"geom18_line_details",
-"geom19_point_details",
-"geom20_labelaligned_details",
-"geom21_text_details",
-"geom25_tallrect_zoom" 
+ "geom14_tallrect_bisects",
+"geom17_vline_details",
+"geom18_labelaligned_details",
+"geom19_ribbon_details",
+"geom20_line_details",
+"geom21_point_details",
+"geom22_labelaligned_details",
+"geom23_text_details",
+"geom27_tallrect_zoom" 
 ],
 "duration":     1000 
 } 
@@ -1259,17 +2056,20 @@
  [
         0,
       20,
-      40 
+      40,
+      60 
 ],
 [
         0,
       20,
-      40 
+      40,
+      60 
 ],
 [
         0,
       20,
-      40 
+      40,
+      60 
 ] 
 ],
 "y": [
@@ -1280,13 +2080,13 @@
        6 
 ],
 [
-      3.5,
-       4,
-     4.5,
-       5 
+        5,
+     5.5,
+       6 
 ],
 [
-       -2,
+     -2.5,
+      -2,
     -1.5,
       -1 
 ] 
@@ -1306,7 +2106,8 @@
       20,
       30,
       40,
-      50 
+      50,
+      60 
 ],
 [
         0,
@@ -1314,7 +2115,8 @@
       20,
       30,
       40,
-      50 
+      50,
+      60 
 ],
 [
         0,
@@ -1322,7 +2124,8 @@
       20,
       30,
       40,
-      50 
+      50,
+      60 
 ] 
 ],
 "y": [
@@ -1333,24 +2136,26 @@
        3,
        4,
        5,
-       6 
+       6,
+       7 
 ],
 [
-      3.5,
-    3.75,
-       4,
-    4.25,
-     4.5,
-    4.75,
-       5 
+     4.75,
+       5,
+    5.25,
+     5.5,
+    5.75,
+       6,
+    6.25 
 ],
 [
-       -2,
+     -2.5,
+   -2.25,
+      -2,
    -1.75,
     -1.5,
    -1.25,
-      -1,
-   -0.75 
+      -1 
 ] 
 ] 
 } 
@@ -1359,14 +2164,16 @@
  "x": [
         0,
       20,
-      40 
+      40,
+      60 
 ],
 "xlab": [
  "0",
 "20",
-"40" 
+"40",
+"60" 
 ],
-"xrange": [    -1.75,    58.75 ],
+"xrange": [     -2.2,     68.2 ],
 "xline": false,
 "xticks": true,
 "y": [
@@ -1381,7 +2188,7 @@
 "4",
 "6" 
 ],
-"yrange": [     -0.3,      6.3 ],
+"yrange": [    -0.35,     7.35 ],
 "yline": false,
 "yticks": true 
 },
@@ -1389,29 +2196,29 @@
  "x": [
         0,
       20,
-      40 
+      40,
+      60 
 ],
 "xlab": [
  "0",
 "20",
-"40" 
+"40",
+"60" 
 ],
-"xrange": [    -1.75,    58.75 ],
+"xrange": [     -2.2,     68.2 ],
 "xline": false,
 "xticks": true,
 "y": [
-      3.5,
-       4,
-     4.5,
-       5 
+        5,
+     5.5,
+       6 
 ],
 "ylab": [
- "3.5",
-"4.0",
-"4.5",
-"5.0" 
+ "5.0",
+"5.5",
+"6.0" 
 ],
-"yrange": [ 3.458002, 5.220431 ],
+"yrange": [  4.63731, 6.252767 ],
 "yline": false,
 "yticks": true 
 },
@@ -1419,27 +2226,31 @@
  "x": [
         0,
       20,
-      40 
+      40,
+      60 
 ],
 "xlab": [
  "0",
 "20",
-"40" 
+"40",
+"60" 
 ],
-"xrange": [    -1.75,    58.75 ],
+"xrange": [     -2.2,     68.2 ],
 "xline": false,
 "xticks": true,
 "y": [
-       -2,
+     -2.5,
+      -2,
     -1.5,
       -1 
 ],
 "ylab": [
- "-2.0",
+ "-2.5",
+"-2.0",
 "-1.5",
 "-1.0" 
 ],
-"yrange": [ -2.077182, -0.6536182 ],
+"yrange": [ -2.577992, -0.7958557 ],
 "yline": false,
 "yticks": true 
 },
@@ -1456,17 +2267,18 @@
 "xlabs": [
  "0",
 "20",
-"40" 
+"40",
+"60" 
 ],
 "ylabs": [
  "0",
 "2",
 "4",
 "6",
-"3.5",
-"4.0",
-"4.5",
 "5.0",
+"5.5",
+"6.0",
+"-2.5",
 "-2.0",
 "-1.5",
 "-1.0" 
@@ -1486,15 +2298,17 @@
  "geom1_rect_bisects",
 "geom2_tallrect_bisects",
 "geom3_vline_bisects",
-"geom4_segment_bisects",
-"geom5_segment_bisects",
-"geom6_text_bisects",
-"geom7_point_bisects",
-"geom8_segment_bisects",
+"geom4_vline_bisects",
+"geom5_labelaligned_bisects",
+"geom6_segment_bisects",
+"geom7_segment_bisects",
+"geom8_text_bisects",
 "geom9_point_bisects",
-"geom10_line_bisects",
+"geom10_segment_bisects",
 "geom11_point_bisects",
-"geom12_tallrect_bisects" 
+"geom12_line_bisects",
+"geom13_point_bisects",
+"geom14_tallrect_bisects" 
 ] 
 },
 "details": {
@@ -1544,19 +2358,15 @@
  "x": [
  [
         1,
-       2,
        3,
-       4,
        5 
 ] 
 ],
 "y": [
  [
- -2.522879,
+       -3,
       -2,
--1.522879,
-      -1,
--0.5228787 
+      -1 
 ] 
 ] 
 } 
@@ -1569,31 +2379,24 @@
 "loc": {
  "x": [
  [
-      0.5,
+        0,
        1,
-     1.5,
        2,
-     2.5,
        3,
-     3.5,
        4,
-     4.5,
        5,
-     5.5 
+       6 
 ] 
 ],
 "y": [
  [
- -2.522879,
--2.261439,
+     -3.5,
+      -3,
+    -2.5,
       -2,
--1.761439,
--1.522879,
--1.261439,
+    -1.5,
       -1,
--0.7614394,
--0.5228787,
--0.2614394 
+    -0.5 
 ] 
 ] 
 } 
@@ -1601,36 +2404,28 @@
 "axis1": {
  "x": [
         1,
-       2,
        3,
-       4,
        5 
 ],
 "xlab": [
  "1e+01",
-"1e+02",
 "1e+03",
-"1e+04",
 "1e+05" 
 ],
-"xrange": [ 0.0451545, 5.674415 ],
+"xrange": [ -5.551115e-17,  6.62266 ],
 "xline": false,
 "xticks": true,
 "y": [
- -2.522879,
+       -3,
       -2,
--1.522879,
-      -1,
--0.5228787 
+      -1 
 ],
 "ylab": [
- "0.003",
+ "0.001",
 "0.010",
-"0.030",
-"0.100",
-"0.300" 
+"0.100" 
 ],
-"yrange": [ -2.724184, -0.2411043 ],
+"yrange": [ -3.872674, -0.4685335 ],
 "yline": false,
 "yticks": true 
 },
@@ -1646,17 +2441,13 @@
 "yanchor": "end",
 "xlabs": [
  "1e+01",
-"1e+02",
 "1e+03",
-"1e+04",
 "1e+05" 
 ],
 "ylabs": [
- "0.003",
+ "0.001",
 "0.010",
-"0.030",
-"0.100",
-"0.300" 
+"0.100" 
 ],
 "title": "Asymptotic timing results for selected commit",
 "title_size": "14.4pt",
@@ -1670,15 +2461,15 @@
 "last_in_row": true 
 },
 "geoms": [
- "geom13_hline_details",
-"geom14_text_details",
-"geom15_vline_details",
+ "geom15_hline_details",
 "geom16_text_details",
-"geom17_ribbon_details",
-"geom18_line_details",
-"geom19_point_details",
-"geom20_labelaligned_details",
-"geom21_text_details" 
+"geom17_vline_details",
+"geom18_labelaligned_details",
+"geom19_ribbon_details",
+"geom20_line_details",
+"geom21_point_details",
+"geom22_labelaligned_details",
+"geom23_text_details" 
 ] 
 },
 "zoom": {
@@ -1697,7 +2488,7 @@
 "entries": [
  {
  "pointfill": "#000000",
-"pointshape":       19,
+"pointshape":       21,
 "pointcolour": "#000000",
 "pointsize":        3,
 "pointstroke":      0.5,
@@ -1705,7 +2496,7 @@
 },
 {
  "pointfill": "#7F7F7F",
-"pointshape":       19,
+"pointshape":       21,
 "pointcolour": "#000000",
 "pointsize":        3,
 "pointstroke":      0.5,
@@ -1713,7 +2504,7 @@
 },
 {
  "pointfill": "#FFFFFF",
-"pointshape":       19,
+"pointshape":       21,
 "pointcolour": "#000000",
 "pointsize":        3,
 "pointstroke":      0.5,
@@ -1734,11 +2525,11 @@
 "entries": [
  {
  "pathcolour": "#EE82EE",
-"pathsize":        1,
+"pathsize":        2,
 "pathlinetype":        1,
 "label": "old",
 "pointcolour": "#EE82EE",
-"pointshape":       19,
+"pointshape":       21,
 "pointsize":        3,
 "pointstroke":      0.5,
 "pathfill": "#FFFFFF",
@@ -1746,11 +2537,11 @@
 },
 {
  "pathcolour": "#0000FF",
-"pathsize":        1,
+"pathsize":        2,
 "pathlinetype":        1,
 "label": "between",
 "pointcolour": "#0000FF",
-"pointshape":       19,
+"pointshape":       21,
 "pointsize":        3,
 "pointstroke":      0.5,
 "pathfill": "#FFFFFF",
@@ -1758,11 +2549,11 @@
 },
 {
  "pathcolour": "#FF0000",
-"pathsize":        1,
+"pathsize":        2,
 "pathlinetype":        1,
 "label": "new",
 "pointcolour": "#FF0000",
-"pointshape":       19,
+"pointshape":       21,
 "pointsize":        3,
 "pointstroke":      0.5,
 "pathfill": "#FFFFFF",
@@ -1921,7 +2712,7 @@
 "15",
 "20" 
 ],
-"xrange": [     -1.5,     20.5 ],
+"xrange": [    -1.55,    21.55 ],
 "xline": false,
 "xticks": true,
 "y": [
@@ -1957,7 +2748,7 @@
 "15",
 "20" 
 ],
-"xrange": [     -1.5,     20.5 ],
+"xrange": [    -1.55,    21.55 ],
 "xline": false,
 "xticks": true,
 "y": [
@@ -2014,10 +2805,10 @@
 "last_in_row": null 
 },
 "geoms": [
- "geom22_tallrect_zoom",
-"geom23_line_zoom",
-"geom24_point_zoom",
-"geom25_tallrect_zoom" 
+ "geom24_tallrect_zoom",
+"geom25_line_zoom",
+"geom26_point_zoom",
+"geom27_tallrect_zoom" 
 ] 
 } 
 },
